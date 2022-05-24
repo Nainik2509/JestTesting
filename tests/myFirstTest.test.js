@@ -1,3 +1,5 @@
+const { sum } = require('../utils/helper')
+
 describe("Number Operations", () => {
     test("1 + 1 should be equal to 2", () => {
         expect(1 + 1).toBe(2);
@@ -113,3 +115,10 @@ describe("Testing reference equality", () => {
         )
     });
 });
+
+
+describe("Testing imported functions", () => {
+    test('Sum function should add 2 numbers', () => {
+        expect(sum(1, 2)).toBe(3);
+    })
+})
