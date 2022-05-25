@@ -1,4 +1,4 @@
-const { sum } = require('../utils/helper')
+const { sum, deleteUserById, findUserById } = require("../utils/helper");
 
 describe("Number Operations", () => {
     test("1 + 1 should be equal to 2", () => {
@@ -110,15 +110,32 @@ describe("Testing reference equality", () => {
                 expect.objectContaining({
                     user: expect.any(String),
                     age: expect.any(Number),
-                })
+                }),
             ])
-        )
+        );
     });
 });
 
-
 describe("Testing imported functions", () => {
-    test('Sum function should add 2 numbers', () => {
+    let users = [
+        { name: "A", age: 23, id: 1 },
+        { name: "B", age: 24, id: 2 },
+        { name: "C", age: 23, id: 3 },
+    ];
+
+    test("Sum function should add 2 numbers", () => {
         expect(sum(1, 2)).toBe(3);
-    })
-})
+    });
+
+    test("Delete by id function should delete a User By Id", () => {
+        expect(deleteUserById(users, 3)).toEqual([
+            { name: "A", age: 23, id: 1 },
+            { name: "B", age: 24, id: 2 },
+        ]);
+    });
+
+    // Done by test Driven development
+    test("Finds a user by id from a list of users", () => {
+        expect(findUserById(users, 3)).toEqual({ name: "C", age: 23, id: 3 });
+    });
+});
