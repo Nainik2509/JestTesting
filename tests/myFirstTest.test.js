@@ -1,5 +1,25 @@
 const { sum, deleteUserById, findUserById } = require("../utils/helper");
 
+// Run before every single Test
+beforeEach(() => {
+    console.log("Ruinning Before Each Test");
+})
+
+// Run after every single Test
+afterEach(() => {
+    console.log("Ruinning After Each Test");
+})
+
+// Run after every single Test
+beforeAll(() => {
+    console.log("Runs before all tests");
+})
+
+// Run after every single Test
+afterAll(() => {
+    console.log("Runs after all tests are done");
+})
+
 describe("Number Operations", () => {
     test("1 + 1 should be equal to 2", () => {
         expect(1 + 1).toBe(2);
@@ -137,5 +157,6 @@ describe("Testing imported functions", () => {
     // Done by test Driven development
     test("Finds a user by id from a list of users", () => {
         expect(findUserById(users, 3)).toEqual({ name: "C", age: 23, id: 3 });
+        expect(findUserById(users, 12)).toBeUndefined();
     });
 });
